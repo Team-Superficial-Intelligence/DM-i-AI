@@ -12,7 +12,7 @@ from dtos.responses import PredictResponse
 
 from settings import Settings, load_env
 from static.render import render
-from utilities.utilities import get_uptime
+from utilities.utilities import get_uptime, decode_image
 
 load_env()
 
@@ -33,10 +33,10 @@ middleware.cors.setup(app)
 
 
 @app.post('/api/predict', response_model=PredictResponse)
-def predict(request: PredictRequest = File(...)) -> PredictResponse:
+def predict(request: PredictRequest) -> PredictResponse:
 
     # This is the Where's Waldo image as an RGB matrix
-    image = Image.open(io.BytesIO(request.file.read())).convert("RGB")
+    image = decode_image(request.image_base64)
 
     # This is a dummy prediction - compute a real one
     prediction = {
