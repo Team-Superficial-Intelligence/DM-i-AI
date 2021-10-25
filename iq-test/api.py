@@ -10,7 +10,7 @@ from dtos.responses import PredictResponse
 
 from settings import Settings, load_env
 from static.render import render
-from utilities.utilities import get_uptime
+from utilities.utilities import get_uptime, decode_image
 import random
 
 load_env()
@@ -35,8 +35,8 @@ middleware.cors.setup(app)
 def predict(request: PredictRequest) -> PredictResponse:
 
     # You receive image in base64 encoding.
-    image = request.image_base64
-    choices = request.image_choices_base64
+    image = decode_image(request.image_base64)
+    choices = decode_image(request.image_choices_base64)
 
     # Process the first two images, and predict the next correct image
     # from the list of image choices
