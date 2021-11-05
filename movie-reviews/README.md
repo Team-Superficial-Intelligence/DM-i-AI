@@ -5,7 +5,7 @@ In this use case, you will be presented with 1000 unique reviews of various movi
   <img src="../images/example.png" width=550>
 </p>
 
-The stars given are in the interval 0.5, 1, ..., 4.5, 5. You'll receive a list of reveiws, containing a review each. You should return the ratings as a list of floats corresponding to a rating for each review.
+The stars given are in the interval 0.5, 1, ..., 4.5, 5. You'll receive a list of reveiws, containing a review each. You should return the ratings as a list of floats corresponding to a rating for each review. There is set a timeout of 30 seconds for this usecase, so you have to return predictions for all 1000 reviews before 30 seconds.
 
 
 ## Evaluation
