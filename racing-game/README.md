@@ -65,7 +65,9 @@ After evaluation, your final score will be provided. This score can be seen on t
 
 ### HTTP(S) redirection
 
-Due to _historical reasons_ some HTTP/1.0 user agents will [erroneously change POST requests to GET requests](https://user-images.githubusercontent.com/242577/66691477-07683f00-ec97-11e9-86d6-e7037da8e6a8.png) after an HTTP 301 redirection. To avoid pain and suffering, take the following measures when testing and submitting your service for the racing game:
+Due to _historical reasons_ some HTTP/1.0 user agents (and [libraries](https://github.com/axios/axios/issues/2460) pretending they're one of those agents) will [erroneously change POST requests to GET requests](https://user-images.githubusercontent.com/242577/66691477-07683f00-ec97-11e9-86d6-e7037da8e6a8.png) after an HTTP 301 redirection. This makes it impossible to guarantee that the racing game will be able to reach your service if the POST request to `/api/predict` will be redirected.
+
+To avoid pain and suffering, take the following measures when testing and submitting your service for the racing game:
 
 1. Always declare the exact protocol your API is served through. Do not put `http` as the protocol even though your HTTP server redirects all HTTP requests to HTTPS.
 2. Always declare the exact port your API is served behind (although HTTP server proxy passes to separate internal ports are usually fine)
