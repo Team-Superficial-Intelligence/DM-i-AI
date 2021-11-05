@@ -65,10 +65,11 @@ After evaluation, your final score will be provided. This score can be seen on t
 
 ### HTTP(S) redirection
 
-Due to _historical reasons_ some HTTP/1.0 user agents will [erroneously change POST requests to GET requests](https://user-images.githubusercontent.com/242577/66691477-07683f00-ec97-11e9-86d6-e7037da8e6a8.png) after an HTTP 301 redirection. To avoid any problems caused by this, take the following measures:
+Due to _historical reasons_ some HTTP/1.0 user agents will [erroneously change POST requests to GET requests](https://user-images.githubusercontent.com/242577/66691477-07683f00-ec97-11e9-86d6-e7037da8e6a8.png) after an HTTP 301 redirection. To avoid pain and suffering, take the following measures when testing and submitting your service for the racing game:
 
-1. Always declare the exact protocol your API is served through. Do not put `http` as the protocol if your HTTP server redirects all HTTP requests to HTTPS.
-2. Always declare the exact port your API is served behind (although HTTP server proxy passes are allowed)
+1. Always declare the exact protocol your API is served through. Do not put `http` as the protocol even though your HTTP server redirects all HTTP requests to HTTPS.
+2. Always declare the exact port your API is served behind (although HTTP server proxy passes to separate internal ports are usually fine)
+3. Before submission, always verify that your service as defined by the protocol, host and port passes the health check on the racing game site (opened on either HTTPS or HTTP)
 
 ### Testing with servers behind HTTP/HTTPS
 
